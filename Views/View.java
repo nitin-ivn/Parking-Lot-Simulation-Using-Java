@@ -41,10 +41,10 @@ public class View {
         for(Slot slot : slots){
             if(i==park.length) break;
             if(slot.slottype == type && !slot.parked){
-                park[i] = "up";
+                park[i] = "E";
                 i++;
             }else if(slot.slottype == type && slot.parked){
-                park[i] = "p";
+                park[i] = "P";
                 i++;
             }
         }
