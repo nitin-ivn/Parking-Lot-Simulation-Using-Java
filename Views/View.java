@@ -51,38 +51,29 @@ public class View {
         display(park,type);
     }
 
-    private void display(String[] park,int type){
-        int[] temp = new int[park.length];
-        for (int m = 0; m < park.length; m++) {
-            temp[m] = m + 1;
-        }
-
+    private static void display(String[] park, int type) {
         int elements = 3;
         System.out.println();
-        System.out.println("Parking Lot For "+type+" Wheelers");
-        for (int i = 0; i < temp.length; i++) {
-            System.out.print(temp[i] + "  ");
+        System.out.println("Parking Lot For " + type + " Wheelers");
+        int count = 0;
+
+        for (int i = 0; i < park.length; i++) {
+            System.out.print((i + 1) + ": ");
             if ((i + 1) % elements == 0) {
                 System.out.println();
-                for (int j = 0; j < elements; j++) {
-                    if (park[i].equals("p"))
-                        System.out.print(park[i] + "  ");
-
-                    if (park[i].equals("up"))
-                        System.out.print(park[i] + " ");
+                for (int j = 0; j < 3; j++) {
+                    System.out.print(park[count] + "  ");
+                    count++;
                 }
                 System.out.println();
                 System.out.println();
             }
         }
-        int ele = temp.length % 3;
+        int ele = park.length % 3;
         if (ele != 0) {
             System.out.println();
             for (int n = ele; n > 0; n--) {
-                if (park[temp.length - n].equals("up"))
-                    System.out.print(park[temp.length - n] + " ");
-                if (park[temp.length - n].equals("p"))
-                    System.out.print(park[temp.length - n] + "  ");
+                System.out.print(park[park.length - n] + "  ");
 
             }
         }

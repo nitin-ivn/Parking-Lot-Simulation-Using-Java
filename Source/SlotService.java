@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 public class SlotService implements ISLOT {
     public ArrayList<Slot> slots = new ArrayList<>();
+    View view = new View();
     @Override
     public void CreateSlots(int type,int length){
         int prevlen = slots.size();
@@ -60,16 +61,12 @@ public class SlotService implements ISLOT {
     }
 
     public void Viewthelot(int type,int slotsfortwo,int slotsforfour,int slotforheavy){
-        int length=0;
-        switch (type){
-            case 2 : length = slotsfortwo;
-                    break;
-            case 4 : length = slotsforfour;
-                    break;
-            case 8 : length = slotforheavy;
-                     break;
-        }
-        View view = new View();
+        int length = switch (type) {
+            case 2 -> slotsfortwo;
+            case 4 -> slotsforfour;
+            case 8 -> slotforheavy;
+            default -> 0;
+        };
         view.ViewParkingSlots(slots,type,length);
     }
 }

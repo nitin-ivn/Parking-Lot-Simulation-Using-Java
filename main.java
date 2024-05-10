@@ -1,7 +1,6 @@
 import Model.*;
 import Source.*;
 
-import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.Date;
@@ -128,7 +127,6 @@ public class main {
 
                 default:
                     System.out.print("Enter a valid input: ");
-                    continue;
             }
         }
     }
