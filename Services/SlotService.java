@@ -1,4 +1,4 @@
-package Source;
+package Services;
 
 import Contracts.ISLOT;
 import Model.Slot;
@@ -13,8 +13,8 @@ public class SlotService implements ISLOT {
     @Override
     public void CreateSlots(int type,int length){
         int prevlen = slots.size();
-        for(int i= prevlen;i<prevlen+length;i++){
-            Slot tmpslot = new Slot(type,i,false);
+        for(int i= prevlen,j=0;i<prevlen+length && j<length;i++,j++){
+            Slot tmpslot = new Slot(type,j,false);
             slots.add(tmpslot);
         }
     }
@@ -30,9 +30,9 @@ public class SlotService implements ISLOT {
 
 
     @Override
-    public void DeleteSlot(int type,int slotnumber){
+    public void DeleteSlot(int type,int slotNumber){
         for(Slot slot : slots){
-            if(slot.slottype == type && slot.slotnumber == slotnumber){
+            if(slot.slottype == type && slot.slotnumber == slotNumber){
                 slot.parked = false;
             }
         }
@@ -60,11 +60,11 @@ public class SlotService implements ISLOT {
         return -1;
     }
 
-    public void Viewthelot(int type,int slotsfortwo,int slotsforfour,int slotforheavy){
+    public void Viewthelot(int type,int slotsForTwo,int slotsForFour,int slotForHeavy){
         int length = switch (type) {
-            case 2 -> slotsfortwo;
-            case 4 -> slotsforfour;
-            case 8 -> slotforheavy;
+            case 2 -> slotsForTwo;
+            case 4 -> slotsForFour;
+            case 8 -> slotForHeavy;
             default -> 0;
         };
         view.ViewParkingSlots(slots,type,length);

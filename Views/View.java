@@ -7,19 +7,21 @@ import java.util.ArrayList;
 
 public class View {
     public void printInputTicket(Ticket ticket){
+        int slotn = (ticket.slotNumber+1);
         System.out.println();
         System.out.println("---------TICKET----------");
         System.out.println("Ticket Number:  "+ticket.TicketNumber);
         System.out.println("Vehicle Number: "+ticket.VehicleNumber);
         System.out.println("Type of Vehicle:"+ticket.TypeOfVehicle +" Wheeler");
         System.out.println("InTime:         "+ticket.intime);
-        System.out.println("Slot Number:    "+ticket.slotNumber+1);
+        System.out.println("Slot Number:    "+slotn);
         System.out.println();
         System.out.println();
-        return;
+
     }
 
     public void printOutputTicket(Ticket ticket){
+        int slotn = ticket.slotNumber+1;
         System.out.println("Unparking Successfull");
         System.out.println();
         System.out.println("-----------TICKET-------------");
@@ -28,7 +30,7 @@ public class View {
         System.out.println("Type of Vehicle:   "+ticket.TypeOfVehicle +" Wheeler");
         System.out.println("InTime:            "+ticket.intime);
         System.out.println("OutTime:           "+ticket.outtime);
-        System.out.println("Slot Number:       "+ticket.slotNumber+1);
+        System.out.println("Slot Number:       "+slotn);
         System.out.println("Amount to be paid: "+ticket.price);
         System.out.println();
         System.out.println();
@@ -43,7 +45,7 @@ public class View {
             if(slot.slottype == type && !slot.parked){
                 park[i] = "E";
                 i++;
-            }else if(slot.slottype == type && slot.parked){
+            }else if(slot.slottype == type){
                 park[i] = "P";
                 i++;
             }

@@ -1,4 +1,4 @@
-package Source;
+package Services;
 
 import Contracts.ITICKET;
 import Model.Ticket;
@@ -11,7 +11,7 @@ import java.util.Date;
 import java.time.temporal.ChronoUnit;
 
 public class TicketService implements ITICKET {
-    public ArrayList<Ticket> tickets = new ArrayList<Ticket>();
+    public ArrayList<Ticket> tickets = new ArrayList<>();
     View views = new View();
 
 

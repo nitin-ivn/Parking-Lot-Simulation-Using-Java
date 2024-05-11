@@ -1,5 +1,5 @@
 import Model.*;
-import Source.*;
+import Services.*;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -12,7 +12,6 @@ public class main {
     public static void main(String[] args){
         int slotsforTwo,slotsforFour,slotsforHeavy;
         Scanner sc = new Scanner(System.in);
-        main Main = new main();
 
         while(true){
             try {
@@ -36,7 +35,7 @@ public class main {
                 }
                 break;
             }catch(java.util.InputMismatchException e){
-                System.out.print("Enter a valid number: ");
+                sc.nextLine();
             }
         }
 
@@ -49,7 +48,7 @@ public class main {
                 }
                 break;
             }catch(java.util.InputMismatchException e){
-                System.out.print("Enter a valid number: ");
+                sc.nextLine();
             }
         }
         SlotService slotService = new SlotService();
@@ -94,7 +93,7 @@ public class main {
                         break;
                     }
                     vehicle.slotNumber = freeslot;
-                    Ticket ticket = Main.TakeTicketFromUser(vehicle,freeslot);
+                    Ticket ticket = TakeTicketFromUser(vehicle,freeslot);
                     vehicle.VechileNumber = ticket.VehicleNumber;
                     ticketService.CreateTicket(ticket);
                     slotService.Parked(vehicle);
@@ -102,7 +101,7 @@ public class main {
 
 
                 case 2 :
-                    int type= Main.returnType("Unparking");
+                    int type= returnType("Unparking");
                     int DelTicket=0,slotnum;
                         System.out.println("Enter your Ticket Number: ");
                         try {
@@ -118,7 +117,7 @@ public class main {
                     break;
 
                 case 3 :
-                    int typeView = Main.returnType("Viewing");
+                    int typeView = returnType("Viewing");
                     slotService.Viewthelot(typeView,slotsforTwo,slotsforFour,slotsforHeavy);
                     break;
 
@@ -131,7 +130,7 @@ public class main {
         }
     }
 
-    public Ticket TakeTicketFromUser(Vehicle vehicle, int slotnumber){
+    public static Ticket TakeTicketFromUser(Vehicle vehicle, int slotnumber){
         int type=0;
         if(vehicle.getType() == Vehicle.TypeVehicle.TwoWheelers){
             type = 2;
@@ -149,19 +148,18 @@ public class main {
         return new Ticket(TicketNo,slotnumber,null,intime, vehicleNumber,type);
     }
 
-    private int random(){
+    private static int random(){
         Random rand = new Random();
         return (rand.nextInt(9000)+1000);
     }
 
-    private String time(){
+    private static String time(){
         Date currentTime = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("hh:mm a");
         return sdf.format(currentTime);
     }
 
-
-    private int returnType(String str){
+    private static int returnType(String str){
         Scanner sc = new Scanner(System.in);
         int type=0;
         System.out.println("Enter the Vehicle for "+str +" : ");
@@ -188,4 +186,5 @@ public class main {
         }
         return type;
     }
+
 }
